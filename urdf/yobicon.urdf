@@ -1,0 +1,361 @@
+<?xml version="1.0" ?>
+<robot name="yobicon">
+  <!-- BODY parts -->
+  <link name="base_link"/>
+  <link name="BODY_BASE"/>
+  <link name="BODY_R">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/BodyRight.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="body_color">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="BODY_L">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/BodyLeft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="body_color"/>
+    </visual>
+  </link>
+  <link name="SERVO_HORN_X_1">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_horn_X.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_horn_color">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="SERVO_2">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.5708 1.5708 0"/><!-- X+90[deg],Y+90[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_servo.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_color">
+        <color rgba="0 0 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="SERVO_3">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="-1.5708 1.5708 0"/><!-- X-90[deg],Y+90[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_servo.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_color"/>
+    </visual>
+  </link>
+  <link name="SERVO_4">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.5708 -1.5708 0"/><!-- X+90[deg],Y-90[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_servo.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_color"/>
+    </visual>
+  </link>
+  <link name="SERVO_5">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="-1.5708 -1.5708 0"/><!-- X-90[deg],Y-90[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_servo.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_color"/>
+    </visual>
+  </link>
+
+  <joint name="BODY(DEBUG)" type="revolute">
+    <parent link="base_link" />
+    <child link="BODY_BASE" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="0.24516625" velocity="10.4719755114"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="base_to_BODY_R" type="fixed">
+    <parent link="BODY_BASE"/>
+    <child link="BODY_R"/>
+    <origin xyz="0 0 0.13985" rpy="0 0 0"/>
+  </joint>
+  <joint name="base_to_BODY_L" type="fixed">
+    <parent link="BODY_BASE"/>
+    <child link="BODY_L"/>
+    <origin xyz="0 0 0.13985" rpy="0 0 0"/>
+  </joint>
+  <joint name="BODY_R_to_SERVO_HORN_X_1" type="fixed">
+    <parent link="BODY_R"/>
+    <child link="SERVO_HORN_X_1"/>
+    <origin xyz="-0.00345 0.0 0.08185" rpy="0 0 0"/>
+  </joint>
+  <joint name="BODY_R_to_SERVO_2" type="fixed">
+    <parent link="BODY_R"/>
+    <child link="SERVO_2"/>
+    <origin xyz="-0.005 -0.0296 0.0619" rpy="0 0 0"/>
+  </joint>
+  <joint name="BODY_L_to_SERVO_3" type="fixed">
+    <parent link="BODY_L"/>
+    <child link="SERVO_3"/>
+    <origin xyz="-0.005 0.0296 0.0619" rpy="0 0 0"/>
+  </joint>
+  <joint name="BODY_R_to_SERVO_4" type="fixed">
+    <parent link="BODY_R"/>
+    <child link="SERVO_4"/>
+    <origin xyz="0.0 -0.0296 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="BODY_L_to_SERVO_5" type="fixed">
+    <parent link="BODY_L"/>
+    <child link="SERVO_5"/>
+    <origin xyz="0.0 0.0296 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Head parts -->
+  <link name="SERVO_1">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="3.1415926 0.0 0.0"/><!-- X+180[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_servo.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_color"/>
+    </visual>
+  </link>
+  <link name="FACE">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/Face.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="skin_color">
+        <color rgba="0.9960 0.9450 0.8784 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="HAIR_FRONT">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/HairFront.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="hair_color">
+        <color rgba="0.3725 0.3255 0.3333 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="HAIR_BACK">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/HairBack.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="hair_color"/>
+    </visual>
+  </link>
+  <link name="KEMOMIMI_R">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/KemonomimiRight.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="mimi_color">
+        <color rgba="0.9843 0.8588 0.3843 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="KEMOMIMI_L">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/KemonomimiLeft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="mimi_color"/>
+    </visual>
+  </link>
+
+  <joint name="Joint_Servo1" type="revolute">
+    <parent link="SERVO_HORN_X_1" />
+    <child link="SERVO_1" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="0.24516625" velocity="10.4719755114"/><!-- min:-90[deg],max:+90[deg] -->
+    <axis xyz="0 0 1"/>
+  </joint>
+  <joint name="SERVO_1_TO_FACE" type="fixed">
+    <parent link="SERVO_1" />
+    <child link="FACE" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="FACE_TO_HAIR_F" type="fixed">
+    <parent link="FACE" />
+    <child link="HAIR_FRONT" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="FACE_TO_HAIR_B" type="fixed">
+    <parent link="FACE" />
+    <child link="HAIR_BACK" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="HAIR_TO_KEMOMIMI_R" type="fixed">
+    <parent link="HAIR_BACK" />
+    <child link="KEMOMIMI_R" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="HAIR_TO_KEMOMIMI_L" type="fixed">
+    <parent link="HAIR_BACK" />
+    <child link="KEMOMIMI_L" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Arm parts -->
+  <link name="SERVO_HORN_2">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.5708 0.7854 0"/><!-- X+90[deg],Y+45[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_horn_i.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_horn_color"/>
+    </visual>
+  </link>
+  <link name="ARM_R">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.7854 0"/><!-- Y-45[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/ArmRight.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="skin_color"/>
+    </visual>
+  </link>
+  <link name="SERVO_HORN_3">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="-1.5708 0.7854 0"/><!-- X-90[deg],Y+45[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_horn_i.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_horn_color"/>
+    </visual>
+  </link>
+  <link name="ARM_L">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.7854 0"/><!-- Y-45[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/ArmLeft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="skin_color"/>
+    </visual>
+  </link>
+
+  <joint name="Joint_Servo2" type="revolute">
+    <parent link="SERVO_2" />
+    <child link="SERVO_HORN_2" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="0.24516625" velocity="10.4719755114"/><!-- min:-90[deg],max:+90[deg] -->
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="HORN_TO_ARM_R" type="fixed">
+    <parent link="SERVO_HORN_2" />
+    <child link="ARM_R" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Joint_Servo3" type="revolute">
+    <parent link="SERVO_3" />
+    <child link="SERVO_HORN_3" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="0.24516625" velocity="10.4719755114"/><!-- min:-90[deg],max:+90[deg] -->
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="HORN_TO_ARM_L" type="fixed">
+    <parent link="SERVO_HORN_3" />
+    <child link="ARM_L" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Leg parts -->
+  <link name="SERVO_HORN_4">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.5708 1.5708 0"/><!-- X+90[deg],Y+90[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_horn_i.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_horn_color"/>
+    </visual>
+  </link>
+  <link name="LEG_R">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/LegRight.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="skin_color"/>
+    </visual>
+  </link>
+  <link name="SERVO_HORN_5">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="-1.5708 1.5708 0"/><!-- X-90[deg],Y+90[deg] -->
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/SG92R_horn_i.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sg92r_horn_color"/>
+    </visual>
+  </link>
+  <link name="LEG_L">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/LegLeft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="skin_color"/>
+    </visual>
+  </link>
+  <link name="BOOTS_R">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/BootsRight.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="boots_color">
+        <color rgba="0.2 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="BOOTS_L">
+    <visual>
+      <geometry>
+        <mesh filename="package://yobicon_description/meshes/BootsLeft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="boots_color"/>
+    </visual>
+  </link>
+
+  <joint name="Joint_Servo4" type="revolute">
+    <parent link="SERVO_4"/>
+    <child link="SERVO_HORN_4"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="0.24516625" velocity="10.4719755114"/><!-- min:-90[deg],max:+90[deg] -->
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="HORN_TO_LEG_R" type="fixed">
+    <parent link="SERVO_HORN_4"/>
+    <child link="LEG_R"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Joint_Servo5" type="revolute">
+    <parent link="SERVO_5"/>
+    <child link="SERVO_HORN_5"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="0.24516625" velocity="10.4719755114"/><!-- min:-90[deg],max:+90[deg] -->
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="HORN_TO_LEG_L" type="fixed">
+    <parent link="SERVO_HORN_5"/>
+    <child link="LEG_L"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="LEG_TO_BOOTS_R" type="fixed">
+    <parent link="LEG_R"/>
+    <child link="BOOTS_R"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  <joint name="LEG_TO_BOOTS_L" type="fixed">
+    <parent link="LEG_L"/>
+    <child link="BOOTS_L"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+</robot>
+
+

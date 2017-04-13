@@ -1,0 +1,77 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"BODY_BASE" [label="BODY_BASE"];
+"BODY_L" [label="BODY_L"];
+"SERVO_3" [label="SERVO_3"];
+"SERVO_HORN_3" [label="SERVO_HORN_3"];
+"ARM_L" [label="ARM_L"];
+"SERVO_5" [label="SERVO_5"];
+"SERVO_HORN_5" [label="SERVO_HORN_5"];
+"LEG_L" [label="LEG_L"];
+"BOOTS_L" [label="BOOTS_L"];
+"BODY_R" [label="BODY_R"];
+"SERVO_2" [label="SERVO_2"];
+"SERVO_HORN_2" [label="SERVO_HORN_2"];
+"ARM_R" [label="ARM_R"];
+"SERVO_4" [label="SERVO_4"];
+"SERVO_HORN_4" [label="SERVO_HORN_4"];
+"LEG_R" [label="LEG_R"];
+"BOOTS_R" [label="BOOTS_R"];
+"SERVO_HORN_X_1" [label="SERVO_HORN_X_1"];
+"SERVO_1" [label="SERVO_1"];
+"FACE" [label="FACE"];
+"HAIR_BACK" [label="HAIR_BACK"];
+"KEMOMIMI_L" [label="KEMOMIMI_L"];
+"KEMOMIMI_R" [label="KEMOMIMI_R"];
+"HAIR_FRONT" [label="HAIR_FRONT"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "BODY(DEBUG)" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"BODY(DEBUG)" -> "BODY_BASE"
+"BODY_BASE" -> "base_to_BODY_L" [label="xyz: 0 0 0.13985 \nrpy: 0 -0 0"]
+"base_to_BODY_L" -> "BODY_L"
+"BODY_L" -> "BODY_L_to_SERVO_3" [label="xyz: -0.005 0.0296 0.0619 \nrpy: 0 -0 0"]
+"BODY_L_to_SERVO_3" -> "SERVO_3"
+"SERVO_3" -> "Joint_Servo3" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"Joint_Servo3" -> "SERVO_HORN_3"
+"SERVO_HORN_3" -> "HORN_TO_ARM_L" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"HORN_TO_ARM_L" -> "ARM_L"
+"BODY_L" -> "BODY_L_to_SERVO_5" [label="xyz: 0 0.0296 0 \nrpy: 0 -0 0"]
+"BODY_L_to_SERVO_5" -> "SERVO_5"
+"SERVO_5" -> "Joint_Servo5" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"Joint_Servo5" -> "SERVO_HORN_5"
+"SERVO_HORN_5" -> "HORN_TO_LEG_L" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"HORN_TO_LEG_L" -> "LEG_L"
+"LEG_L" -> "LEG_TO_BOOTS_L" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"LEG_TO_BOOTS_L" -> "BOOTS_L"
+"BODY_BASE" -> "base_to_BODY_R" [label="xyz: 0 0 0.13985 \nrpy: 0 -0 0"]
+"base_to_BODY_R" -> "BODY_R"
+"BODY_R" -> "BODY_R_to_SERVO_2" [label="xyz: -0.005 -0.0296 0.0619 \nrpy: 0 -0 0"]
+"BODY_R_to_SERVO_2" -> "SERVO_2"
+"SERVO_2" -> "Joint_Servo2" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"Joint_Servo2" -> "SERVO_HORN_2"
+"SERVO_HORN_2" -> "HORN_TO_ARM_R" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"HORN_TO_ARM_R" -> "ARM_R"
+"BODY_R" -> "BODY_R_to_SERVO_4" [label="xyz: 0 -0.0296 0 \nrpy: 0 -0 0"]
+"BODY_R_to_SERVO_4" -> "SERVO_4"
+"SERVO_4" -> "Joint_Servo4" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"Joint_Servo4" -> "SERVO_HORN_4"
+"SERVO_HORN_4" -> "HORN_TO_LEG_R" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"HORN_TO_LEG_R" -> "LEG_R"
+"LEG_R" -> "LEG_TO_BOOTS_R" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"LEG_TO_BOOTS_R" -> "BOOTS_R"
+"BODY_R" -> "BODY_R_to_SERVO_HORN_X_1" [label="xyz: -0.00345 0 0.08185 \nrpy: 0 -0 0"]
+"BODY_R_to_SERVO_HORN_X_1" -> "SERVO_HORN_X_1"
+"SERVO_HORN_X_1" -> "Joint_Servo1" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"Joint_Servo1" -> "SERVO_1"
+"SERVO_1" -> "SERVO_1_TO_FACE" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"SERVO_1_TO_FACE" -> "FACE"
+"FACE" -> "FACE_TO_HAIR_B" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"FACE_TO_HAIR_B" -> "HAIR_BACK"
+"HAIR_BACK" -> "HAIR_TO_KEMOMIMI_L" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"HAIR_TO_KEMOMIMI_L" -> "KEMOMIMI_L"
+"HAIR_BACK" -> "HAIR_TO_KEMOMIMI_R" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"HAIR_TO_KEMOMIMI_R" -> "KEMOMIMI_R"
+"FACE" -> "FACE_TO_HAIR_F" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"FACE_TO_HAIR_F" -> "HAIR_FRONT"
+}
